@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace techhelp.Models;
+namespace techhelp.api.Models;
 
-public class Cliente
+public class Cliente : IModel
 {
     [Key]
     public int Id_cliente { get; set; }

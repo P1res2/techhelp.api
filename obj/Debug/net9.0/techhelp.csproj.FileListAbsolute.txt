@@ -335,3 +335,4 @@ G:\Projetos\C# projects\techhelp.api\obj\Debug\net9.0\refint\techhelp.dll
 G:\Projetos\C# projects\techhelp.api\obj\Debug\net9.0\techhelp.pdb
 G:\Projetos\C# projects\techhelp.api\obj\Debug\net9.0\techhelp.genruntimeconfig.cache
 G:\Projetos\C# projects\techhelp.api\obj\Debug\net9.0\ref\techhelp.dll
+G:\Projetos\C# projects\techhelp.api\bin\Debug\net9.0\AutoMapper.dll
