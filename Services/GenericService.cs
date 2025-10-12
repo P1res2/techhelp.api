@@ -12,28 +12,28 @@ public class GenericService<TEntity, TReadDto, TCreateDto, TUpdateDto>
     private readonly DbSet<TEntity> _dbSet;
     private readonly IMapper _mapper;
      
-    public GenericService(AppDbContext appDbContext, IMapper mapper)
+    public GenericService(AppDbContext appDbContext, IMapper mapper) // Construtor
     {
         _appDbContext = appDbContext;
         _dbSet = _appDbContext.Set<TEntity>();
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<TReadDto>> ListarTodosAsync()
+    public virtual async Task<IEnumerable<TReadDto>> ListarTodosAsync()
     {
         var lista = await _dbSet.ToListAsync();
 
         return _mapper.Map<IEnumerable<TReadDto>>(lista);
     }
 
-    public async Task<TReadDto> BuscarPorIdAsync(int id)
+    public virtual async Task<TReadDto> BuscarPorIdAsync(int id)
     {
         var entity = await _dbSet.FindAsync(id);
 
         return _mapper.Map<TReadDto>(entity);
     }
 
-    public async Task<TReadDto> CriarAsync(TCreateDto dto)
+    public virtual async Task<TReadDto> CriarAsync(TCreateDto dto)
     {
         var entity = _mapper.Map<TEntity>(dto);
         _dbSet.Add(entity);
@@ -42,7 +42,7 @@ public class GenericService<TEntity, TReadDto, TCreateDto, TUpdateDto>
         return _mapper.Map<TReadDto>(entity);
     }
 
-    public async Task<TReadDto> AtualizarAsync(int id, TUpdateDto dto)
+    public virtual async Task<TReadDto> AtualizarAsync(int id, TUpdateDto dto)
     {
         var entity = await _dbSet.FindAsync(id);
         if (entity == null) return default;
@@ -54,7 +54,7 @@ public class GenericService<TEntity, TReadDto, TCreateDto, TUpdateDto>
         return _mapper.Map<TReadDto>(entity);
     }
 
-    public async Task<bool> DeletarAsync(int id)
+    public virtual async Task<bool> DeletarAsync(int id)
     {
         var entity = await _dbSet.FindAsync(id);
         if (entity == null) return false;

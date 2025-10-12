@@ -1,5 +1,5 @@
 namespace techhelp.api.DTOs;
-// ClienteReadDto, ClienteCreateDto, ClienteUpdateDto
+
 public class ClienteReadDto
 {
     public int Id_cliente { get; set; }
@@ -19,7 +19,7 @@ public class ClienteCreateDto
     public string Tipo { get; set; }
     public string Email { get; set; }
     public string Telefone { get; set; }
-    public DateTime Created_at { get; set; }
+    public DateTime Created_at;
 }
 
 public class ClienteUpdateDto
@@ -28,6 +28,4 @@ public class ClienteUpdateDto
     public string Tipo { get; set; }
     public string Email { get; set; }
     public string Telefone { get; set; }
-    public DateTime Updated_at { get; set; }
-
 }

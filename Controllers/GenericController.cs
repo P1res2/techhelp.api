@@ -10,7 +10,7 @@ public class GenericController<TEntity, TReadDto, TCreateDto, TUpdateDto> : Cont
 {
     private readonly IGenericService<TEntity, TReadDto, TCreateDto, TUpdateDto> _service;
 
-    public GenericController(IGenericService<TEntity, TReadDto, TCreateDto, TUpdateDto> service)
+    public GenericController(IGenericService<TEntity, TReadDto, TCreateDto, TUpdateDto> service) // Construtor
     {
         _service = service;
     }
@@ -32,8 +32,8 @@ public class GenericController<TEntity, TReadDto, TCreateDto, TUpdateDto> : Cont
         return Ok(novo);
     }
 
-    [HttpPut("{id}")]
-    public async Task<ActionResult<TReadDto>> Put(int id, TUpdateDto entity)
+    [HttpPatch("{id}")]
+    public async Task<ActionResult<TReadDto>> Patch(int id, TUpdateDto entity)
     {
         await _service.AtualizarAsync(id, entity);
         return Ok(new {message = "Atualizado com sucesso!"});

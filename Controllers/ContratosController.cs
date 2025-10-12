@@ -9,5 +9,17 @@ namespace techhelp.api.Controllers;
 [Route("api/[controller]")]
 public class ContratosController : GenericController<Contrato, ContratoReadDto, ContratoCreateDto, ContratoUpdateDto>
 {
-    public ContratosController(IGenericService<Contrato, ContratoReadDto, ContratoCreateDto, ContratoUpdateDto> service) : base(service) { }
+    private readonly ContratoService _ContratoService;
+
+    public ContratosController(ContratoService service) : base(service)
+    {
+        _ContratoService = service;
+    }
+
+    [HttpGet("Cliente/{id}")]
+    public async Task<ActionResult<ClienteReadDto>> GetContratosByClienteID(int id)
+    {
+        var item = await _ContratoService.BuscarContratosPorIdClientejAsync(id);
+        return item == null ? NotFound(new { message = "Nenhum encontrado" }) : Ok(item);
+    }
 }

@@ -20,6 +20,14 @@ builder.Services.AddScoped<ClienteService>();
 builder.Services.AddScoped<IGenericService<Contrato, ContratoReadDto, ContratoCreateDto, ContratoUpdateDto>, GenericService<Contrato, ContratoReadDto, ContratoCreateDto, ContratoUpdateDto>>();
 builder.Services.AddScoped<ContratoService>();
 
+// Serviço genérico para Tecnicos
+builder.Services.AddScoped<IGenericService<Tecnico, TecnicoReadDto, TecnicoCreateDto, TecnicoUpdateDto>, GenericService<Tecnico, TecnicoReadDto, TecnicoCreateDto, TecnicoUpdateDto>>();
+builder.Services.AddScoped<TecnicoService>();
+
+// Serviço genérico para Especialidades
+builder.Services.AddScoped<IGenericService<Especialidade, EspecialidadeReadDto, EspecialidadeCreateDto, EspecialidadeUpdateDto>, GenericService<Especialidade, EspecialidadeReadDto, EspecialidadeCreateDto, EspecialidadeUpdateDto>>();
+builder.Services.AddScoped<EspecialidadeService>();
+
 
 builder.Services.AddAutoMapper(cfg =>
 {
