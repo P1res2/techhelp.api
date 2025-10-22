@@ -6,10 +6,10 @@ namespace techhelp.api.Data;
 public class AppDbContext : DbContext
 {
     public DbSet<Cliente> clientes { get; set; }
-    public DbSet<Contrato> contratos { get; set; }
     public DbSet<Tecnico> tecnicos { get; set; }
     public DbSet<Especialidade> especialidades { get; set; }
     public DbSet<TecnicoEspecialidade> tecnico_especialidades { get; set; }
+    public DbSet<Chamado> chamados { get; set; }
 
     public AppDbContext(DbContextOptions options) : base(options) { }
     

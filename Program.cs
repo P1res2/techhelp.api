@@ -16,10 +16,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IGenericService<Cliente, ClienteReadDto, ClienteCreateDto, ClienteUpdateDto>, GenericService<Cliente, ClienteReadDto, ClienteCreateDto, ClienteUpdateDto>>();
 builder.Services.AddScoped<ClienteService>();
 
-// Serviço genérico para Contratos
-builder.Services.AddScoped<IGenericService<Contrato, ContratoReadDto, ContratoCreateDto, ContratoUpdateDto>, GenericService<Contrato, ContratoReadDto, ContratoCreateDto, ContratoUpdateDto>>();
-builder.Services.AddScoped<ContratoService>();
-
 // Serviço genérico para Tecnicos
 builder.Services.AddScoped<IGenericService<Tecnico, TecnicoReadDto, TecnicoCreateDto, TecnicoUpdateDto>, GenericService<Tecnico, TecnicoReadDto, TecnicoCreateDto, TecnicoUpdateDto>>();
 builder.Services.AddScoped<TecnicoService>();
@@ -27,6 +23,10 @@ builder.Services.AddScoped<TecnicoService>();
 // Serviço genérico para Especialidades
 builder.Services.AddScoped<IGenericService<Especialidade, EspecialidadeReadDto, EspecialidadeCreateDto, EspecialidadeUpdateDto>, GenericService<Especialidade, EspecialidadeReadDto, EspecialidadeCreateDto, EspecialidadeUpdateDto>>();
 builder.Services.AddScoped<EspecialidadeService>();
+
+// Serviço genérico para Chamdos
+builder.Services.AddScoped<IGenericService<Chamado, ChamadoReadDto, ChamadoCreateDto, ChamadoUpdateDto>, GenericService<Chamado, ChamadoReadDto, ChamadoCreateDto, ChamadoUpdateDto>>();
+builder.Services.AddScoped<ChamadoService>();
 
 
 builder.Services.AddAutoMapper(cfg =>

@@ -13,11 +13,6 @@ public class MappingProfile : Profile
         CreateMap<ClienteCreateDto, Cliente>();
         CreateMap<ClienteUpdateDto, Cliente>();
 
-        // Contrato Mapping
-        CreateMap<Contrato, ContratoReadDto>().ReverseMap();
-        CreateMap<ContratoCreateDto, Contrato>();
-        CreateMap<ContratoUpdateDto, Contrato>();
-
         // Tecnico Mapping
         CreateMap<Tecnico, TecnicoReadDto>().ReverseMap();
         CreateMap<TecnicoCreateDto, Tecnico>();
@@ -30,5 +25,10 @@ public class MappingProfile : Profile
 
         CreateMap<Tecnico, TecnicoReadDto>().ForMember(dest => dest.Especialidades, opt => opt.MapFrom(src => src.TecnicoEspecialidades.Select(te => te.Especialidade)));
         CreateMap<Especialidade, EspecialidadeReadDto>();
+
+        // Chamados Mapping
+        CreateMap<Chamado, ChamadoReadDto>().ReverseMap();
+        CreateMap<ChamadoCreateDto, Chamado>();
+        CreateMap<ChamadoUpdateDto, Chamado>();
     }
 }
