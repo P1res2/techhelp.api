@@ -19,14 +19,25 @@ public class ChamadoService : GenericService<Chamado, ChamadoReadDto, ChamadoCre
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ChamadoReadDto>> BuscarChamadosPorIdClientejAsync(int id)
+    public async Task<IEnumerable<ChamadoReadDto>> BuscarChamadosPorCpfCnpjClienteAsync(string cpfCnpj)
     {
-        var lista = await _dbSet.Where(a => a.Id_cliente == id).ToListAsync();
+        // busca o id direto
+        var idCliente = await _appDbContext.clientes
+            .Where(c => c.Cpf_cnpj == cpfCnpj)
+            .Select(c => c.Id_cliente)
+            .FirstOrDefaultAsync();
+
+        if (idCliente == 0)
+            return Enumerable.Empty<ChamadoReadDto>();
+
+        var lista = await _dbSet
+            .Where(a => a.Id_cliente == idCliente)
+            .ToListAsync();
 
         return _mapper.Map<IEnumerable<ChamadoReadDto>>(lista);
     }
 
-    public async Task<IEnumerable<ChamadoReadDto>> BuscarChamadosPorIdTecnicojAsync(int id)
+    public async Task<IEnumerable<ChamadoReadDto>> BuscarChamadosPorIdTecnicoAsync(int id)
     {
         var lista = await _dbSet.Where(a => a.Id_tecnico == id).ToListAsync();
 
@@ -55,7 +66,6 @@ public class ChamadoService : GenericService<Chamado, ChamadoReadDto, ChamadoCre
     {
         dto.Created_at = DateTime.Now;
         dto.Data_abertura = DateTime.Now;
-        dto.Prioridade = "Média";
         dto.Status = "Aberto";
         return await base.CriarAsync(dto);
     }

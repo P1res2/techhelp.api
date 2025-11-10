@@ -25,7 +25,7 @@ public class ChamadoCreateDto
     public int? Id_tecnico;
     public string Titulo {get; set;}
     public string Descricao { get; set; }
-    public string Prioridade;
+    public string Prioridade { get; set; }
     public string Status;
     public string Tipo_atendimento { get; set; }
     public string Categoria { get; set; }

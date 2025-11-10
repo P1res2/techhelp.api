@@ -16,17 +16,17 @@ public class ChamadosController : GenericController<Chamado, ChamadoReadDto, Cha
         _ChamadoService = service;
     }
 
-    [HttpGet("Cliente/{id}")]
-    public async Task<ActionResult<ClienteReadDto>> GetChamadosByClienteID(int id)
+    [HttpGet("Cliente/{Cpf_cnpj}")]
+    public async Task<ActionResult<ClienteReadDto>> GetChamadosByClienteID(string Cpf_cnpj)
     {
-        var item = await _ChamadoService.BuscarChamadosPorIdClientejAsync(id);
+        var item = await _ChamadoService.BuscarChamadosPorCpfCnpjClienteAsync(Cpf_cnpj);
         return item == null ? NotFound(new { message = "Nenhum encontrado" }) : Ok(item);
     }
 
     [HttpGet("Tecnico/{id}")]
     public async Task<ActionResult<ClienteReadDto>> GetChamadosByTecnicoID(int id)
     {
-        var item = await _ChamadoService.BuscarChamadosPorIdTecnicojAsync(id);
+        var item = await _ChamadoService.BuscarChamadosPorIdTecnicoAsync(id);
         return item == null ? NotFound(new { message = "Nenhum encontrado" }) : Ok(item);
     }
 

@@ -8,6 +8,7 @@ public class ClienteReadDto
     public string Tipo { get; set; }
     public string Email { get; set; }
     public string Telefone { get; set; }
+    public string Senha { get; set; }
     public DateTime Created_at { get; set; }
     public DateTime Updated_at { get; set; }
 }
@@ -19,6 +20,7 @@ public class ClienteCreateDto
     public string Tipo { get; set; }
     public string Email { get; set; }
     public string Telefone { get; set; }
+    public string Senha { get; set; }
     public DateTime Created_at;
 }
 
@@ -28,4 +30,5 @@ public class ClienteUpdateDto
     public string Tipo { get; set; }
     public string Email { get; set; }
     public string Telefone { get; set; }
+    public string Senha { get; set; }
 }
